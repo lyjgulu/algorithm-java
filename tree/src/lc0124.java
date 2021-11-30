@@ -1,19 +1,19 @@
 public class lc0124 {
-    int res = Integer.MIN_VALUE;
+    private int res = Integer.MIN_VALUE;
 
-    public int maxPathSum(TreeNode root) {
-        maxGain(root);
+    public int maxPathSun(TreeNode root) {
+        maxSum(root);
         return res;
     }
 
-    public int maxGain(TreeNode root) {
-        if (root == null) {
+    public int maxSum(TreeNode node) {
+        if (node == null) {
             return 0;
         }
-        int left = Math.max(0, maxPathSum(root.left));
-        int right = Math.max(0, maxPathSum(root.right));
-        res = Math.max(res, left + right + root.val);
-        return root.val + Math.max(left, right);
+        int leftSum = Math.max(0, maxSum(node.left));
+        int rightSum = Math.max(0, maxSum(node.right));
+        res = Math.max(res, leftSum + rightSum + node.val);
+        return node.val + Math.max(leftSum, rightSum);
     }
 }
 
